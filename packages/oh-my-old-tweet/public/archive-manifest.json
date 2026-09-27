@@ -1,0 +1,231 @@
+{
+  "application": {
+    "name": "Oh my Old Tweet",
+    "short_name": "OMOT",
+    "version": "0.1.0",
+    "description": "A graceful, powerful and easy-to-use tool to see old (including deleted) tweets",
+    "author": "ayanamists",
+    "repository": "https://github.com/azozallely1-svg/oh-my-old-tweet",
+    "website": "https://omot.ayayaya.org"
+  },
+  "webManifest": {
+    "short_name": "OMOT",
+    "name": "Oh my Old Tweet",
+    "icons": [
+      {
+        "src": "/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+  },
+  "routing": {
+    "type": "HashRouter",
+    "routes": [
+      {
+        "path": "/",
+        "component": "MainPage",
+        "description": "Main landing page"
+      },
+      {
+        "path": "/search",
+        "component": "SearchPage",
+        "description": "Search page for tweets"
+      },
+      {
+        "path": "/:user",
+        "component": "UserPage",
+        "description": "User timeline view"
+      },
+      {
+        "path": "/status/:user/:timestamp/:id",
+        "component": "StatusPage",
+        "description": "Individual status/tweet view"
+      }
+    ]
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-router-dom": "^6.21.3",
+    "next": "^14.0.1",
+    "@tanstack/react-query": "^5.100.9",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.1.6",
+    "luxon": "^3.6.1",
+    "idb": "^8.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@testing-library/react": "^16.0.0",
+    "vitest": "^2.1.1",
+    "tailwindcss": "^3.4.1"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next dev",
+    "test": "yarn check:headless && yarn test:unit",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:install": "playwright install --with-deps chromium",
+    "test:all": "yarn check:headless && yarn test:unit && yarn test:e2e"
+  },
+  "packages": {
+    "oh-my-old-tweet": {
+      "type": "Frontend Application",
+      "description": "Main React/Next.js frontend for viewing archived tweets",
+      "location": "packages/oh-my-old-tweet"
+    },
+    "omot-edge": {
+      "type": "Edge Worker API",
+      "description": "Cloudflare Worker for handling CDX queries and archive proxying",
+      "location": "packages/omot-edge"
+    },
+    "omot-cli": {
+      "type": "Command Line Tool",
+      "description": "CLI tools for analyzing archived tweets and graphs",
+      "location": "packages/omot-cli",
+      "commands": [
+        {
+          "name": "solve",
+          "description": "Find all old usernames of a user"
+        },
+        {
+          "name": "match",
+          "description": "Find posts by keyword or regex"
+        },
+        {
+          "name": "graph",
+          "description": "Export weighted reply graph"
+        },
+        {
+          "name": "circle",
+          "description": "Rank user's reply circle by date range"
+        }
+      ]
+    },
+    "omot-media-cache": {
+      "type": "Media Cache Service",
+      "description": "Private local media cache for OMOT images with Cloudflare Tunnel support",
+      "location": "packages/omot-media-cache"
+    },
+    "omot-server": {
+      "type": "Backend Server",
+      "description": "Next.js server-side API with database and Meilisearch integration",
+      "location": "packages/omot-server"
+    },
+    "react-tweet-card": {
+      "type": "React Component Library",
+      "description": "Reusable tweet card component for rendering archived tweets",
+      "location": "packages/react-tweet-card"
+    },
+    "twitter-data-parser": {
+      "type": "Data Parser Library",
+      "description": "Parser for extracting tweet data from archived HTML/JSON",
+      "location": "packages/twitter-data-parser"
+    }
+  },
+  "features": {
+    "supported": [
+      "Browse old tweets",
+      "View deleted tweets from Internet Archive",
+      "Search tweets by keyword",
+      "User timeline view",
+      "Engagement info (likes, retweets, replies)",
+      "Reply graph analysis",
+      "User mention circles",
+      "Date-based filtering",
+      "Self-hosted deployment"
+    ],
+    "in_progress": [
+      "Profile images and content",
+      "Video support",
+      "Retweets handling",
+      "Pagination optimization"
+    ],
+    "planned": [
+      "Direct Twitter crawling",
+      "Import from gallery-dl"
+    ]
+  },
+  "deployment": {
+    "browser": {
+      "url": "https://omot.ayayaya.org",
+      "method": "GitHub Pages / CDN"
+    },
+    "self_hosted": {
+      "method": "Docker Compose",
+      "port": 3142,
+      "prerequisites": "Docker, Docker Compose",
+      "download": "https://github.com/ayanamists/oh-my-old-tweet/releases/download/v0.1.0/deploy.zip"
+    },
+    "edge_worker": {
+      "platform": "Cloudflare Workers",
+      "database": "D1 (SQLite)",
+      "search": "Meilisearch"
+    }
+  },
+  "limitations": {
+    "archive": [
+      "Internet Archive may not have crawled all tweets",
+      "From 2023.06, Twitter changed policy limiting new crawls",
+      "Video in tweets usually not crawled",
+      "NSFW tweets may not be saved"
+    ],
+    "application": [
+      "Retweets not fully supported",
+      "Replies not fully supported",
+      "No video playback support"
+    ]
+  },
+  "api_endpoints": [
+    "/api/listUserNames - List archived usernames",
+    "/api/userName - Get single user data",
+    "/api/userNames - Get multiple users",
+    "/api/loadArchive - Load archive snapshots",
+    "/api/status/loadArchive - Load tweet snapshots"
+  ],
+  "configuration": {
+    "edge": {
+      "environment_variables": [
+        "OMOT_API_KEY",
+        "CORS_PROXY_URL",
+        "CDX_URL"
+      ]
+    },
+    "media_cache": {
+      "environment_variables": [
+        "MEDIA_CACHE_KEY",
+        "MEDIA_CACHE_DIR",
+        "MEDIA_CACHE_HOST",
+        "MEDIA_CACHE_PORT",
+        "MEDIA_MAX_BYTES",
+        "MEDIA_FETCH_TIMEOUT_MS",
+        "MEDIA_ALLOWED_HOSTS"
+      ]
+    }
+  },
+  "metadata": {
+    "created": "2024",
+    "license": "See LICENSE file",
+    "languages": [
+      "TypeScript",
+      "React/JSX",
+      "SQL"
+    ],
+    "testing_frameworks": [
+      "Vitest (unit)",
+      "Playwright (e2e)",
+      "Jest (legacy)"
+    ]
+  }
+}
