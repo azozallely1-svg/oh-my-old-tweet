@@ -1,0 +1,90 @@
+{
+  "metadata": {
+    "username": "sakhaliig",
+    "platform": "Twitter",
+    "archive_date": "2026-09-27",
+    "sources": [
+      "https://web.archive.org/web/*/twitter.com/sakhaliig*",
+      "https://web.archive.org/cdx/search/cdx?url=twitter.com/sakhaliig&output=json"
+    ],
+    "note": "Archive compiled from Internet Archive (Wayback Machine) and other web archiving sources"
+  },
+  "profile": {
+    "username": "sakhaliig",
+    "url": "https://twitter.com/sakhaliig",
+    "profile_type": "unknown",
+    "status": "searching"
+  },
+  "archive_snapshots": {
+    "wayback_machine": {
+      "total_captures": "unknown",
+      "url": "https://web.archive.org/web/*/twitter.com/sakhaliig*",
+      "cdx_api": "https://web.archive.org/cdx/search/cdx?url=twitter.com/sakhaliig&output=json&filter=statuscode:200",
+      "date_range": {
+        "earliest": null,
+        "latest": null
+      },
+      "captures": []
+    }
+  },
+  "tweets": {
+    "total_count": 0,
+    "data": []
+  },
+  "search_queries": [
+    {
+      "query": "twitter.com/sakhaliig",
+      "type": "profile_url",
+      "archive": "wayback_machine",
+      "status": "no_results_found"
+    },
+    {
+      "query": "twitter.com/*sakhaliig*",
+      "type": "wildcard_search",
+      "archive": "wayback_machine",
+      "status": "no_results_found"
+    }
+  ],
+  "status": {
+    "found": false,
+    "message": "حساب sakhaliig غير موجود في أرشيفات الإنترنت المتاحة",
+    "possible_reasons": [
+      "الحساب لم يكن موجودًا على تويتر",
+      "لم يتم أرشفة الحساب من قبل أي خدمة أرشفة",
+      "تم حذف أو إغلاق الحساب قبل الأرشفة",
+      "اسم المستخدم قد يكون مختلفًا أو غير صحيح"
+    ]
+  },
+  "alternatives": {
+    "suggestion_1": "تحقق من اسم المستخدم الصحيح",
+    "suggestion_2": "جرّب البحث في مواقع أرشفة أخرى",
+    "suggestion_3": "استخدم أداة OMOT مع اسم مستخدم موجود بالفعل",
+    "example_users": [
+      "jack",
+      "elonmusk",
+      "_iori_n"
+    ]
+  },
+  "api_endpoints": {
+    "wayback_cdx": {
+      "base": "https://web.archive.org/cdx/search/cdx",
+      "query_profile": "?url=twitter.com/sakhaliig&output=json",
+      "query_wildcard": "?url=twitter.com/*sakhaliig*&output=json",
+      "full_url_profile": "https://web.archive.org/cdx/search/cdx?url=twitter.com/sakhaliig&output=json&filter=statuscode:200",
+      "full_url_wildcard": "https://web.archive.org/cdx/search/cdx?url=twitter.com/*sakhaliig*&output=json&filter=statuscode:200"
+    }
+  },
+  "tools": {
+    "omot_app": {
+      "url": "https://omot.ayayaya.org",
+      "route": "https://omot.ayayaya.org/#/sakhaliig",
+      "description": "جرّب استخدام تطبيق OMOT مباشرة"
+    },
+    "wayback_direct": {
+      "url": "https://web.archive.org/web/*/twitter.com/sakhaliig*",
+      "description": "تصفح الأرشيف مباشرة"
+    }
+  },
+  "timestamp": "2026-09-27T04:12:41Z",
+  "version": "1.0"
+}
